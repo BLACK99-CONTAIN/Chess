@@ -1,0 +1,72 @@
+body {
+    background: radial-gradient(circle at center, #2c3e50, #1a252f);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(0, 1fr));
+    width: 450px;
+    height: 450px;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    border: 10px solid #5a3e1b;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(160deg, #7a5230, #5a3e1b);
+    border-radius: 10px;
+}
+
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.square.light {
+    background: radial-gradient(circle at center, #f0d9b5 0%, #e0c38c 100%);
+}
+
+.square.dark {
+    background: radial-gradient(circle at center, #b58863 0%, #8d6244 100%);
+}
+
+.piece {
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.piece.white {
+    color: #fff;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+}
+
+.piece.black {
+    color: #222;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.piece.draggable {
+    cursor: grab;
+}
+
+.chessboard.flipped {
+    transform: rotateX(25deg) rotateY(180deg);
+}
+
+.flipped .piece {
+    transform: rotate(180deg);
+}
