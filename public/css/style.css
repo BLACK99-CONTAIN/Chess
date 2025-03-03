@@ -63,9 +63,9 @@ body {
     cursor: grab;
 }
 
-.chessboard.flipped {
-    transform: rotateX(25deg) rotateY(180deg);
-}
+/* .chessboard.flipped {
+    /* transform: rotateX(25deg) rotateY(180deg);
+} */ 
 
 .flipped .piece {
     transform: rotate(180deg);
