@@ -3,7 +3,7 @@ const socket = require("socket.io");
 const http = require("http");
 const path = require("path");
 const { Chess } = require("chess.js");
-const Port=process.env.PORT
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 const server = http.createServer(app);
@@ -12,7 +12,8 @@ const chess = new Chess();
 const players = {};
 
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "public")));
+app.use("/public", express.static(path.join(__dirname, "public")));
+
 
 const indexRouter = require("./routes"); 
 app.use("/", indexRouter); // Use the routes file
@@ -58,6 +59,8 @@ io.on("connection", (socket) => {
     });
 });
 
-server.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
+
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
+
